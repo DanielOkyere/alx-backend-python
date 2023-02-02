@@ -1,21 +1,28 @@
 #!/usr/bin/env python3
-"""Contains method that safely gets value from dictionary."""
-from typing import Mapping, Any, Union, TypeVar, Optional
+"""
+Contains a function that returns  a list of integers
+multiplied by certain factor.
+"""
+from typing import Tuple, List
 
-T = TypeVar('T')
 
-
-def safely_get_value(dct: Mapping, key: Any,
-                     default: Optional[T] = None) -> Union[Any, T]:
-    """Safely gets value from dictionary.
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
+    """Returns a list of integers multiplied by certain factor.
     Args:
-        dct (dict): Dictionary to get value from.
-        key (str): Key to get value from.
-        default (any): Default value to return if key is not found.
+        lst: A tuple of integers.
+        factor: An integer.
     Returns:
-        Value from dictionary.
+        A list of integers.
     """
-    if key in dct:
-        return dct[key]
-    else:
-        return
+    zoomed_in: List = [
+        item for item in lst
+        for i in range(factor)
+    ]
+    return zoomed_in
+
+
+array: Tuple = (12, 72, 91)
+
+zoom_2x = zoom_array(array)
+
+zoom_3x = zoom_array(array, 3)
